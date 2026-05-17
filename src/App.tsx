@@ -128,7 +128,7 @@ function App() {
         </div>
 
         <div className="hero-section">
-          <h1>07강. 공정 간 상관관계를 Sankey Diagram으로 읽고 만드는 AI 분석 교안</h1>
+          <h1>Ch.7 공정 간 상관관계 분석 및 산점도 시각화</h1>
           <p className="subtitle">
             히트맵 중복을 제거하고, 여러 공정 사이의 정상 흐름과 이상 전이를 구분하는 방법을 대학 3-4학년 취준생 눈높이에서 설명하도록 재설계한 문서형 교안
           </p>
