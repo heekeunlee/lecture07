@@ -3,10 +3,12 @@
 :root {
   --bg-primary: #ffffff;
   --bg-secondary: #f8f9fa;
+  --bg-accent: #f0f7ff;
   --accent: #0071e3;
+  --accent-strong: #0f172a;
   --text-primary: #1d1d1f;
-  --text-secondary: #86868b;
-  --border: rgba(0, 0, 0, 0.1);
+  --text-secondary: #5f6673;
+  --border: rgba(15, 23, 42, 0.1);
   --font-main: 'Outfit', sans-serif;
   --font-content: 'Inter', sans-serif;
 }
@@ -23,6 +25,10 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  width: 100%;
 }
 
 .app-container {
@@ -91,6 +97,8 @@ h1 {
   color: var(--text-secondary);
   font-weight: 400;
   word-break: keep-all;
+  max-width: 920px;
+  margin: 0 auto;
 }
 
 .lesson-meta {
@@ -124,12 +132,12 @@ section h2 {
 }
 
 .section-intro {
-  max-width: 860px;
+  max-width: 900px;
   margin-top: 1rem;
   color: var(--text-secondary);
   font-family: var(--font-content);
-  font-size: 1.12rem;
-  line-height: 1.7;
+  font-size: 1.08rem;
+  line-height: 1.75;
   word-break: keep-all;
 }
 
@@ -142,13 +150,13 @@ section h2 {
   font-size: 0.95rem;
   font-weight: 900;
   color: #111827;
-  text-transform: none;
   letter-spacing: 0.01em;
   margin-bottom: 0.9rem;
   display: block;
 }
 
-.section-label::first-letter {
+.section-label::first-letter,
+.mini-label {
   color: var(--accent);
 }
 
@@ -167,40 +175,68 @@ section h2 {
   background: linear-gradient(180deg, var(--accent), #22c55e);
 }
 
-.learning-goals-grid {
+.learning-goals-grid,
+.insight-grid,
+.practice-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
   margin-top: 2rem;
 }
 
-.learning-goal-card {
+.learning-goal-card,
+.insight-card,
+.practice-card,
+.placeholder-panel,
+.comparison-panel,
+.report-panel {
   border: 1px solid var(--border);
   background: var(--bg-secondary);
   border-radius: 18px;
+}
+
+.learning-goal-card,
+.insight-card,
+.practice-card {
   padding: 1.35rem;
+}
+
+.learning-goal-card {
   min-height: 230px;
 }
 
-.learning-goal-card span {
+.learning-goal-card span,
+.practice-card span {
   color: var(--accent);
   font-size: 0.9rem;
   font-weight: 900;
 }
 
-.learning-goal-card h3 {
+.learning-goal-card h3,
+.insight-card h3,
+.practice-card h3 {
   font-size: 1.2rem;
   line-height: 1.35;
   margin: 0.9rem 0 0.7rem;
   word-break: keep-all;
 }
 
+.mini-label {
+  font-size: 0.88rem;
+  font-weight: 900;
+}
+
 .learning-goal-card p,
-.placeholder-panel p {
+.insight-card p,
+.practice-card p,
+.placeholder-panel p,
+.comparison-panel p,
+.check-item p,
+.report-panel p {
   color: var(--text-secondary);
   font-family: var(--font-content);
   font-size: 1rem;
-  line-height: 1.65;
+  line-height: 1.7;
   word-break: keep-all;
 }
 
@@ -213,7 +249,7 @@ section h2 {
 
 .timeline-step {
   border: 1px solid rgba(0, 113, 227, 0.28);
-  background: #f0f7ff;
+  background: var(--bg-accent);
   border-radius: 12px;
   padding: 1rem;
 }
@@ -230,24 +266,72 @@ section h2 {
   font-weight: 800;
 }
 
-.placeholder-panel {
-  border: 1px solid var(--border);
-  background: var(--bg-secondary);
-  border-radius: 18px;
+.comparison-panel {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
   margin-top: 1.5rem;
   padding: 1.35rem;
 }
 
-.placeholder-panel strong {
+.comparison-panel strong,
+.placeholder-panel strong,
+.report-panel strong {
   display: block;
+  color: var(--accent-strong);
+  font-size: 1rem;
+  margin-bottom: 0.45rem;
+}
+
+.placeholder-panel,
+.report-panel {
+  margin-top: 1.5rem;
+  padding: 1.35rem;
+}
+
+.checklist-panel {
+  display: grid;
+  gap: 0.9rem;
+  margin-top: 2rem;
+}
+
+.check-item {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 1rem;
+  align-items: start;
+  padding: 1.1rem 1.2rem;
+  border: 1px solid rgba(0, 113, 227, 0.16);
+  background: #fbfdff;
+  border-radius: 16px;
+}
+
+.check-badge {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.35rem 0.7rem;
+  background: var(--bg-accent);
   color: var(--accent);
-  font-size: 0.95rem;
-  margin-bottom: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 900;
+}
+
+.report-panel p + p {
+  margin-top: 0.7rem;
 }
 
 @media (max-width: 900px) {
   .learning-goals-grid,
-  .lesson-timeline {
+  .lesson-timeline,
+  .insight-grid,
+  .practice-grid,
+  .comparison-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .check-item {
     grid-template-columns: 1fr;
   }
 }
